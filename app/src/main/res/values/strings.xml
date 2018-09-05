@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BootCampTask2</string>
+    <string name="err_msg_email">Enter valid email address</string>
+    <string name="err_msg_password">Enter the password</string>
+</resources>
