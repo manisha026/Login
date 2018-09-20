@@ -1,6 +1,8 @@
 package rethinkux.com.bootcamptask2;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,13 +17,22 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import java.util.HashMap;
+
+import static rethinkux.com.bootcamptask2.HomeActivity.PREFS_NAME;
+import static rethinkux.com.bootcamptask2.UserSessionManager.PREF_NAME;
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
+    public static final String PREFS_NAME = "LoginPrefs";
+    int PRIVATE_MODE = 0;
+    UserSessionManager userSessionManager;
     private EditText mEtUerId;
     private EditText mEtPassword;
     private Button mBtnLogin;
     private TextInputLayout mTilUserId;
     private TextInputLayout mTilPassword;
+    private Context context;
 
     private static boolean isValidEmail(String email) {
         return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
@@ -32,12 +43,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        userSessionManager = new UserSessionManager(getApplicationContext());
+
         init();
 
         mBtnLogin.setOnClickListener(this);
 
         mEtUerId.addTextChangedListener(new MyTextWatcher(mEtUerId));
         mEtPassword.addTextChangedListener(new MyTextWatcher(mEtPassword));
+
+        context = this;
     }
 
     private void init() {
@@ -60,29 +75,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 } else if (mEtPassword.getText().toString().trim().length() == 0) {
                     mEtPassword.setError("Password is not entered");
                     mEtPassword.requestFocus();
-                } else {
-                    Intent loginIntent = new Intent(LoginActivity.this, HomeActivity.class);
-                    startActivity(loginIntent);
+                }
+                else {
+                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                    startActivity(intent);
                 }
         }
 
     }
 
-    /**
-     * Validating form
-     */
-    private void submitForm() {
-
-        if (!validateEmail()) {
-            return;
-        }
-
-        if (!validatePassword()) {
-            return;
-        }
-
-        Toast.makeText(getApplicationContext(), "Thank You!", Toast.LENGTH_SHORT).show();
-    }
 
     private boolean validateEmail() {
         String email = mEtUerId.getText().toString().trim();

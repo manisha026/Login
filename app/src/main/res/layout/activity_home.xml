@@ -7,6 +7,12 @@
     tools:context=".HomeActivity"
     android:background="@drawable/background_gradient">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.Toolbar>
 
     <TextView
         android:layout_width="wrap_content"
@@ -19,14 +25,14 @@
         android:textSize="32dp" />
 
     <Button
-        android:id="@+id/btn_getAccess"
+        android:id="@+id/btn_logout"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="126dp"
         android:background="@drawable/home_button_background"
-        android:text="Get Access"
+        android:text="Logout"
         android:textSize="16dp"
         android:textColor="@android:color/white"
         android:padding="16dp"/>

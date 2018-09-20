@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".ToggleChangeTextActivity"
+    android:layout_margin="16dp">
+
+    <Switch
+        android:id="@+id/switch_change"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:thumbTint="#0fce71"
+        android:trackTint="#055410"
+        style="@style/MySwitch"
+        android:checked="true"
+        android:layout_margin="16dp"
+        android:theme="@style/SwitchCompatTheme"/>
+
+    <TextView
+        android:id="@+id/textView_change"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="P"
+        android:gravity="center"
+        android:layout_margin="16dp"
+        android:textColor="#0ebe14"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:background="@drawable/text_background"/>
+
+
+
+
+</LinearLayout>
